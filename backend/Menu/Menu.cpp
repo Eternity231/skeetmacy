@@ -1,4 +1,4 @@
-ï»¿#include "Menu.h"
+﻿#include "Menu.h"
 /*
 #include "../../Backend/Utilities/Utilities.h"
 #include "../../Backend/Config/Settings.h"

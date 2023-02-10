@@ -1,4 +1,4 @@
-ï»¿#include "MenuFramework.h"
+﻿#include "MenuFramework.h"
 #include "../Renderer/Renderer.h"
 
 #include "../Renderer/color.h"
