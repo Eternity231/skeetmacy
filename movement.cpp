@@ -489,32 +489,35 @@ void Movement::AutoPeek( ) {
 	}
 }
 
-void Movement::QuickStop( ) {
-	// convert velocity to angular momentum.
-	ang_t angle;
-	math::VectorAngles( g_cl.m_local->m_vecVelocity( ), angle );
+void Movement::QuickStop() {
+	if ( !settings.QuickStop ) {
+		// convert velocity to angular momentum.
+		ang_t angle;
+		math::VectorAngles(g_cl.m_local->m_vecVelocity(), angle);
 
-	// get our current speed of travel.
-	float speed = g_cl.m_local->m_vecVelocity( ).length( );
+		// get our current speed of travel.
+		float speed = g_cl.m_local->m_vecVelocity().length();
 
-	// fix direction by factoring in where we are looking.
-	angle.y = g_cl.m_view_angles.y - angle.y;
+		// fix direction by factoring in where we are looking.
+		angle.y = g_cl.m_view_angles.y - angle.y;
 
-	// convert corrected angle back to a direction.
-	vec3_t direction;
-	math::AngleVectors( angle, &direction );
+		// convert corrected angle back to a direction.
+		vec3_t direction;
+		math::AngleVectors(angle, &direction);
 
-	vec3_t stop = direction * -speed;
+		vec3_t stop = direction * -speed;
 
-	if( g_cl.m_speed > 13.f ) {
-		g_cl.m_cmd->m_forward_move = stop.x;
-		g_cl.m_cmd->m_side_move = stop.y;
-	}
-	else {
-		g_cl.m_cmd->m_forward_move = 0.f;
-		g_cl.m_cmd->m_side_move = 0.f;
+		if (g_cl.m_speed > 13.f) {
+			g_cl.m_cmd->m_forward_move = stop.x;
+			g_cl.m_cmd->m_side_move = stop.y;
+		}
+		else {
+			g_cl.m_cmd->m_forward_move = 0.f;
+			g_cl.m_cmd->m_side_move = 0.f;
+		}
 	}
 }
+
 
 void Movement::FakeWalk( ) {
 	vec3_t velocity{ g_cl.m_local->m_vecVelocity( ) };

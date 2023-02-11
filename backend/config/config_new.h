@@ -206,6 +206,7 @@ public:
 	bool local_blend;
 
 	int autobuyy;
+	bool QuickStop;
 
 	bool aim_corection;
 	bool automatic_hc_increase;

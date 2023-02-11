@@ -203,12 +203,12 @@ void CMenu::Draw()
 					}
 				}
 
-				ui::SliderInt( "Visible damage", &settings.minimal_damage, 0, 100, "%d%%" );
-				ui::SliderInt( "Awall damage", &settings.penetrate_minimal_damage, 0, 100, "%d%%" );
+				ui::SliderInt( "Visible damage", &settings.minimal_damage, 0, 100, "%d" );
+				ui::SliderInt( "Awall damage", &settings.penetrate_minimal_damage, 0, 100, "%d" );
 
 				ui::Label( "Override damage key" );
 				ui::KeyBind( "damage keyYY", &settings.override_keu, &settings.key_style );
-				ui::SliderInt( "Override damage", &settings.overriden_dmg, 0, 100, "%d%%" );
+				ui::SliderInt( "Override damage", &settings.overriden_dmg, 0, 100, "%d" );
 
 				ui::Label( "Hitchance key" );
 				ui::KeyBind( "Hitchance keyYY", &settings.override_hc_key, &settings.key_style );
@@ -234,9 +234,9 @@ void CMenu::Draw()
 				ui::Checkbox( "Edge", &settings.edge );
 
 				ui::SingleSelect( "Pitch", &settings.pitch_stand, { "Off", "Down", "Up", "Random", "Ideal"} );
-				ui::SingleSelect( "Yaw base", &settings.yaw_stand, { "Off", "Direction", "Jiier", "Rotate", "Random" } );
+				ui::SingleSelect( "Yaw base", &settings.yaw_stand, { "Off", "Direction", "Jitter", "Rotate", "Random" } );
 				if ( settings.yaw_stand == 1 ) {
-					ui::SliderInt( "Jitter angle", &settings.jitter_range_stand, 0, 180, "%d%%" );
+					ui::SliderInt( "Jitter angle", &settings.jitter_range_stand, 0, 180, "%d" );
 				}
 				ui::SingleSelect( "Base angle", &settings.base_angle_stand, { "Off", "Static", "Away crosshair", "Away distance" } );
 				ui::SingleSelect( "Fake body", &settings.body_fake_stand, { "Off", "Left", "Right", "Opposite","Z" } );
@@ -245,13 +245,13 @@ void CMenu::Draw()
 				ui::SingleSelect( "Distortion type", &settings.distortion_type, { "Dopium", "Onetap", "Immortal" } );
 				switch ( settings.distortion_type ) {
 					case 0: {
-						ui::SliderInt( "Distortion angle", &settings.distortion_angle, 0, 180, "%d%%" );
-						ui::SliderInt( "Distortion speed", &settings.distortion_speed, 0, 100, "%d%%" );
+						ui::SliderInt( "Distortion angle", &settings.distortion_angle, 0, 180, "%d" );
+						ui::SliderInt( "Distortion speed", &settings.distortion_speed, 0, 100, "%d" );
 					} break;
 					case 1: {
 						ui::Checkbox( "Force turn", &settings.distortion_force_turn );
-						ui::SliderInt( "Distortion angle", &settings.distortion_angle, 0, 180, "%d%%" );
-						ui::SliderInt( "Distortion speed", &settings.distortion_speed, 0, 100, "%d%%" );
+						ui::SliderInt( "Distortion angle", &settings.distortion_angle, 0, 180, "%d" );
+						ui::SliderInt( "Distortion speed", &settings.distortion_speed, 0, 100, "%d" );
 					} break;
 					case 2: {
 						ui::Checkbox( "Disable when running", &settings.disable_distort_when_run );
@@ -259,9 +259,9 @@ void CMenu::Draw()
 						ui::Checkbox( "Twist", &settings.distort_twist );
 
 
-						ui::SliderInt( "Max time", &settings.distortion_max_time, 0, 20, "%d%%" );
-						ui::SliderInt( "Distortion angle", &settings.distortion_angle, 0, 180, "%d%%" );
-						ui::SliderInt( "Distortion speed", &settings.distortion_speed, 0, 100, "%d%%" );
+						ui::SliderInt( "Max time", &settings.distortion_max_time, 0, 20, "%d" );
+						ui::SliderInt( "Distortion angle", &settings.distortion_angle, 0, 180, "%d" );
+						ui::SliderInt( "Distortion speed", &settings.distortion_speed, 0, 100, "%d" );
 					}
 				}
 
@@ -286,7 +286,7 @@ void CMenu::Draw()
 				ui::Checkbox( "Extend packets", &settings.extend_fakelag_packeets, true );
 				ui::SingleSelect( "Lag mode", &settings.lag_mode, { "Max", "Break", "Random", "Break step", "Factor [reversed]", "Switch [reversed]" } );
 
-				ui::SliderInt( "Fake-lag ticks", &settings.lag_limit, 0, settings.extend_fakelag_packeets ? 30 : 15, "%d%%" );
+				ui::SliderInt( "Fake-lag ticks", &settings.lag_limit, 0, settings.extend_fakelag_packeets ? 30 : 15, "%d" );
 			}
 			ui::EndChild();
 
@@ -294,7 +294,7 @@ void CMenu::Draw()
 			{
 				ui::SingleSelect( "Fake yaw", &settings.fake_yaw, { "Off", "Default", "Relative", "Jitter","Rotate", "Random", "Local view" } );
 				if ( settings.fake_yaw == 2 ) {
-					ui::SliderInt( "Relative angle", &settings.fake_relative, 0, 180, "%d%%" );
+					ui::SliderInt( "Relative angle", &settings.fake_relative, 0, 180, "%d" );
 				}
 
 				ui::SingleSelect( "Exploit aa", &settings.exploit_aa, { "Breaker", "Extended", "Shift [!]" } );
@@ -302,7 +302,7 @@ void CMenu::Draw()
 					case 0: {
 						ui::Checkbox( "Breaker", &settings.breaker );
 						if ( settings.breaker ) {
-							ui::SliderInt( "Breaker angle", &settings.breaker_side, 0, 180, "%d%%" );
+							ui::SliderInt( "Breaker angle", &settings.breaker_side, 0, 180, "%d" );
 
 							ui::Label( "Breaker key" );
 							ui::KeyBind( "sad123112 keyYY", &settings.breaker_key, &settings.key_style );
@@ -366,8 +366,8 @@ void CMenu::Draw()
 				if ( settings.box_enemy ) {
 					ui::Checkbox( "Custom box", &settings.custom_box );
 					if ( settings.custom_box ) {
-						ui::SliderInt( "Box horizontal", &settings.box_horizontal, 0, 100, "%d%%" );
-						ui::SliderInt( "Box vertical", &settings.box_vertical, 0, 100, "%d%%" );
+						ui::SliderInt( "Box horizontal", &settings.box_horizontal, 0, 100, "%d" );
+						ui::SliderInt( "Box vertical", &settings.box_vertical, 0, 100, "%d" );
 					}
 				}
 				ui::Checkbox( "Name", &settings.name_esp ); 
@@ -382,7 +382,7 @@ void CMenu::Draw()
 					if ( settings.health_animation ) {
 						ui::Checkbox( "Custom animation", &settings.custom_animate );
 						if ( settings.custom_animate ) {
-							ui::SliderInt( "Animation value", &settings.animation_health, 0, 200, "%d%%" );
+							ui::SliderInt( "Animation value", &settings.animation_health, 0, 200, "%d" );
 						}
 					}
 					ui::Checkbox( "Getze backround", &settings.getze_backround_h );
@@ -511,12 +511,12 @@ void CMenu::Draw()
 				ui::Checkbox( "Field of view", &settings.fov_visuals );
 				if ( settings.fov_visuals ) {
 					ui::Checkbox( "Use fov while scope", &settings.fov_while_scoped );
-					ui::SliderInt( "Field of view amount", &settings.fov_amount, 0, 180, "%d%%" );
+					ui::SliderInt( "Field of view amount", &settings.fov_amount, 0, 180, "%d" );
 				}
 
 				ui::Checkbox( "Viewmodel fov", &settings.vfov );
 				if ( settings.vfov ) {
-					ui::SliderInt( "Viewmodel fov amount", &settings.v_fov_am, 0, 180, "%d%%" );
+					ui::SliderInt( "Viewmodel fov amount", &settings.v_fov_am, 0, 180, "%d" );
 				}
 
 				if ( settings.night_mode || settings.transparent_props || settings.fullbrigan ) {
@@ -548,6 +548,7 @@ void CMenu::Draw()
 			ui::BeginChild("Miscellaneous", { Vec2(0,0), Vec2(3, 10) });
 			{
 				ui::SingleSelect( "Automatic buy", &settings.autobuyy, { "Off", "Auto", "Ssg", "Awp" } );
+				ui::Checkbox( "QuickStop", &settings.QuickStop );
 				ui::Checkbox( "Preserve killfeed", &settings.kilffed );
 				ui::Checkbox( "Clan-tag", &settings.cltang );
 				ui::Checkbox( "Rod-goll force", &settings.rodgol );
