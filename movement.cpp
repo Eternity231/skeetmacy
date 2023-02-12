@@ -459,15 +459,15 @@ void Movement::FixMove( CUserCmd *cmd, const ang_t &wish_angles ) {
 		MoonWalk( cmd );
 }
 
-void Movement::AutoPeek( ) {
+void Movement::AutoPeek() {
 	// set to invert if we press the button.
-	if( g_input.GetKeyState( g_menu.main.movement.autopeek.get( ) ) ) {
-		if( g_cl.m_old_shot )
+	if (g_input.GetKeyState(g_menu.main.movement.autopeek.get())) {
+		if (g_cl.m_old_shot)
 			m_invert = true;
 
 		vec3_t move{ g_cl.m_cmd->m_forward_move, g_cl.m_cmd->m_side_move, 0.f };
 
-		if( m_invert ) {
+		if (m_invert) {
 			move *= -1.f;
 			g_cl.m_cmd->m_forward_move = move.x;
 			g_cl.m_cmd->m_side_move = move.y;
@@ -476,21 +476,21 @@ void Movement::AutoPeek( ) {
 
 	else m_invert = false;
 
-	bool can_stop = settings.autostopp || ( !settings.autostopp && g_input.GetKeyState( g_menu.main.movement.autostop.get( ) ) );
-	if( ( g_input.GetKeyState( g_menu.main.movement.autopeek.get( ) ) || can_stop ) && g_aimbot.m_stop ) {
-		switch ( settings.autostop_type ) {
+	bool can_stop = settings.autostopp || (!settings.autostopp && g_input.GetKeyState(g_menu.main.movement.autostop.get()));
+	if ((g_input.GetKeyState(g_menu.main.movement.autopeek.get()) || can_stop) && g_aimbot.m_stop) {
+		switch (settings.autostop_type) {
 		case 0: {
-			Movement::QuickStop( );
+			Movement::QuickStop();
 		} break;
 		case 1: {
-			Getze::FrameController::QuickStopL3D( g_cl.m_cmd );
+			Getze::FrameController::QuickStopL3D(g_cl.m_cmd);
 		} break;
 		}
 	}
 }
 
 void Movement::QuickStop() {
-	if ( !settings.QuickStop ) {
+	if (settings.QuickStop ) {
 		// convert velocity to angular momentum.
 		ang_t angle;
 		math::VectorAngles(g_cl.m_local->m_vecVelocity(), angle);
@@ -517,6 +517,7 @@ void Movement::QuickStop() {
 		}
 	}
 }
+
 
 
 void Movement::FakeWalk( ) {

@@ -554,6 +554,7 @@ void CMenu::Draw()
 				ui::Checkbox( "Rod-goll force", &settings.rodgol );
 				ui::Checkbox( "Unlock inventory in game", &settings.unlock_inve );
 				ui::Checkbox( "Damage event", &settings.damagelog );
+				ui::KeyBind( "Autopeek", &settings.autopeek, &settings.key_style ); // im not sure if that works well
 				if ( settings.damagelog ) {
 					ui::Checkbox( "Change style to getze", &settings.getzezuz_hitflag );
 				}

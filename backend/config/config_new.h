@@ -179,6 +179,7 @@ public:
 	int skin_tec;
 	bool cltang;
 	int fakewalkke;
+	int autopeek;
 
 	int weapon_seed;
 	int weapon_wear;
