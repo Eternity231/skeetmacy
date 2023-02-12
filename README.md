@@ -1,3 +1,3 @@
 # skeetmacy
 csgo2018cheat
-我抄了我懒得改了，要是有大佬请帮我把autopeek绑到menu里代码已经写好了万分感谢
+啊我超还是我自己把autopeek搞了qwq但是现在开始崩溃乐
